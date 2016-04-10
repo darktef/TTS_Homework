@@ -1,0 +1,29 @@
+body {
+	background-color: #F2F5A9;
+}
+.vid{
+	display: inline-block;
+	margin: 50px;
+}
+
+.step {
+	display:inline-block;
+	position:absolute;
+	top: 110px;
+}
+
+.step img{
+	max-width: 500px;
+	max-height: 500px;
+	width: auto;
+	height: auto;
+	float:right;
+}
+
+.step ul {
+	position:absolute;
+	top:40px;
+	right:50px;
+	color:white;
+	font-size: 18px;
+}

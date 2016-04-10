@@ -1,0 +1,30 @@
+mkdir directories
+cd directories
+mkdir Dogs e-texts images Monkeys
+touch forbidden.txt index.html structure.txt
+cd Dogs
+mkdir hate like
+cd hate
+touch bananas.html bones.html
+cp * ../like
+cd ../../e-texts
+touch gutindex.all
+mkdir Maugham,W.Somerest OReilly,Augsutine Poe,EdgarAllan
+cd Maugham,W.Somerest
+touch moona10.txt moona.zip
+cd ../OReilly,Augsutine
+touch Alvira The Heroine of Vesuvius.txt
+cd ../Poe,EdgarAllan
+touch poe1v10.txt poe1v10.zip story2.txt
+cd ../../images
+mkdir cartoons clipart
+cd cartoons
+touch df950523.jpg df971202.jpg
+cd ../clipart
+mkdir animals food
+cd animals
+touch dog.gif monkey.gif
+cd ../food
+touch bananas.gif bone.gif
+cd ../../../Dogs
+cp -r * ../Monkeys

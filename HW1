@@ -1,0 +1,19 @@
+cd directories
+pwd
+cd images/clipart/food
+pwd
+cd ../../../e-texts/
+cd Poe,EdgarAllan
+ls
+cd ../../images
+pwd
+mkdir photographs
+ls
+cd photographs
+touch sunrise.jpg
+mv sunrise.jpg ../
+cd ..
+ls
+cd ../Monkeys/like
+subl like
+rm bananas.html
