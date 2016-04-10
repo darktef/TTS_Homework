@@ -1,5 +1,5 @@
 # Preset Inventory
-product = {
+@product = {
 	"shirt" => 15,
 	"pants" => 12,
 	"belts" => 20,
@@ -7,20 +7,20 @@ product = {
 }
 action = ["0 - Display Inventory", "1 - Purchase Item", "2 - Sell Item", "3 - Add Item", "4 - Remove Item", "5 - Exit"]
 
-def disp(inventory)
-	inventory.each do |i,q|
+def disp
+	@product.each do |i,q|
 		puts "#{i}: (#{q} in stock)"
 	end
 end
 
-def purchase(inventory,item,quantity)
-	inventory[item] -= quantity
-	return inventory
+def purchase(item,quantity)
+	@product[item] -= quantity
+	return @product
 end
 
-def sell(inventory,item,quantity)
-	inventory[item] += quantity
-	return inventory
+def sell(item,quantity)
+	@product[item] += quantity
+	return @product
 end
 
 
@@ -39,14 +39,14 @@ while true
 	if response == 0
 		# Display the current inventory
 		puts "\nThe current inventory is:"
-		disp(product)
+		disp
 
 	elsif response == 1
 		# Let user to make purchase
-		puts "Which item would you like to purchase?"
-		product.each_key {|key| print "#{key}\n"}
+		puts "Which item would you like to purchase?\n"
+		@product.each_key {|key| print "#{key.capitalize}/ "}
 		order = gets.chomp.downcase
-			while product.has_key?(order) == false
+			while @product.has_key?(order) == false
 				puts "Sorry we do not have the item you want. Please enter a valid item." 
 				order = gets.chomp.downcase
 			end
@@ -54,12 +54,12 @@ while true
 
 		begin
 			order_num = gets.to_i
-			puts "Sorry, we do not have enough #{order} in stock. There are only #{product[order]} left in the stock." if order_num > product[order]
-		end until order_num < product[order]
+			puts "Sorry, we do not have enough #{order} in stock. There are only #{@product[order]} left in the stock." if order_num > @product[order]
+		end until order_num < @product[order]
 
 		puts "You ordered #{order_num} #{order}."
 
-		product = purchase(product,order,order_num)
+		@product = purchase(order,order_num)
 
 	elsif response == 2
 		# Let user to sell item to the store
@@ -67,10 +67,10 @@ while true
 		sell_item = gets.chomp.downcase
 		puts "How many would you like to sell?"
 		sell_item_num = gets.to_i
-		if product.has_key?(sell_item) == false
-			product[sell_item] = sell_item_num
+		if @product.has_key?(sell_item) == false
+			@product[sell_item] = sell_item_num
 		else
-			product = sell(product,sell_item,sell_item_num)
+			@product = sell(sell_item,sell_item_num)
 		end
 		puts "You sold #{sell_item_num} #{sell_item} to the store."
 
@@ -78,8 +78,8 @@ while true
 		# Let user to add item
 		puts "What item would you like to add?"
 		new_item = gets.chomp.downcase
-		if product.has_key?(new_item) == false
-			product[new_item] = 0
+		if @product.has_key?(new_item) == false
+			@product[new_item] = 0
 		else
 			puts "Sorry, the item already exists.."
 		end
@@ -88,8 +88,8 @@ while true
 		# Let user to remove item
 		puts "What item would you like to remove?"
 		del_item = gets.chomp.downcase
-		if product.has_key?(del_item) == true
-			product.delete(del_item)
+		if @product.has_key?(del_item) == true
+			@product.delete(del_item)
 		else
 			puts "Sorry, the item does not exist.."
 		end
