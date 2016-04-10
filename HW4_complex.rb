@@ -24,7 +24,7 @@ def sell(item,quantity)
 end
 
 
-while true
+begin
 	# Prompt the user with the action list
 	# Ensure User is entering valid reponse
 	begin
@@ -43,8 +43,9 @@ while true
 
 	elsif response == 1
 		# Let user to make purchase
-		puts "Which item would you like to purchase?\n"
+		puts "Which item would you like to purchase? "
 		@product.each_key {|key| print "#{key.capitalize}/ "}
+		puts
 		order = gets.chomp.downcase
 			while @product.has_key?(order) == false
 				puts "Sorry we do not have the item you want. Please enter a valid item." 
@@ -94,8 +95,9 @@ while true
 			puts "Sorry, the item does not exist.."
 		end
 
-	else
-		break  # if user choose to Exit
 	end
 	puts
-end
+end until response == 5
+
+# Generalized approach to check user's input?
+# begin end until loop only?
