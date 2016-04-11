@@ -1,9 +1,9 @@
 # Preset Inventory
 @product = {
-	"shirt" => 15,
-	"pants" => 12,
-	"belts" => 20,
-	"socks" => 17
+	shirt: 15,
+	pants: 12,
+	belts: 20,
+	socks: 17
 }
 action = ["0 - Display Inventory", "1 - Purchase Item", "2 - Sell Item", "3 - Add Item", "4 - Remove Item", "5 - Exit"]
 
@@ -46,10 +46,10 @@ begin
 		puts "Which item would you like to purchase? "
 		@product.each_key {|key| print "#{key.capitalize}/ "}
 		puts
-		order = gets.chomp.downcase
+		order = gets.chomp.downcase.to_sym
 			while @product.has_key?(order) == false
 				puts "Sorry we do not have the item you want. Please enter a valid item." 
-				order = gets.chomp.downcase
+				order = gets.chomp.downcase.to_sym
 			end
 		puts "How many would you like to purchase?"
 
@@ -65,7 +65,7 @@ begin
 	elsif response == 2
 		# Let user to sell item to the store
 		puts "Which item would you like to sell?"
-		sell_item = gets.chomp.downcase
+		sell_item = gets.chomp.downcase.to_sym
 		puts "How many would you like to sell?"
 		sell_item_num = gets.to_i
 		if @product.has_key?(sell_item) == false
@@ -78,7 +78,7 @@ begin
 	elsif response == 3
 		# Let user to add item
 		puts "What item would you like to add?"
-		new_item = gets.chomp.downcase
+		new_item = gets.chomp.downcase.to_sym
 		if @product.has_key?(new_item) == false
 			@product[new_item] = 0
 		else
@@ -88,7 +88,7 @@ begin
 	elsif response == 4
 		# Let user to remove item
 		puts "What item would you like to remove?"
-		del_item = gets.chomp.downcase
+		del_item = gets.chomp.downcase.to_sym
 		if @product.has_key?(del_item) == true
 			@product.delete(del_item)
 		else
