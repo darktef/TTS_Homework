@@ -14,8 +14,8 @@ end
 class Appliance < Commodity
 	attr_accessor :width, :depth, :height
 	def installation_fee
-		if self.price < 499 
-			(self.price * 1.15).round(2)
+		if price < 499 
+			(price * 1.15).round(2)
 		else
 			0
 		end
@@ -33,7 +33,7 @@ puts "The installation fee for #{range.brand} #{range.model_num} of #{range.pric
 class Refrigerator < Appliance
 	attr_accessor :ice_maker, :esyo, :total_capacity
 	def discount
-		return "The #{self.brand} #{self.model_num} is current on sale now. The discounted price is #{(self.price * 0.9).round(2)}" if Time.now.month == 4
+		return "The #{brand} #{model_num} is current on sale now. The discounted price is #{(price * 0.9).round(2)}" if Time.now.month == 4
 	end
 end
 
