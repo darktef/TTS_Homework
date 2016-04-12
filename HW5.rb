@@ -16,6 +16,8 @@ class Appliance < Commodity
 	def installation_fee
 		if price < 499 
 			(price * 1.15).round(2)
+			# if it is inside the class (in the method), then it inherited from parent class as well
+			# but if it is outside, you have to specify which instance it belonged to
 		else
 			0
 		end
