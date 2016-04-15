@@ -51,7 +51,9 @@ end
 
 class Trees < GardenPlants
 	attr_accessor :soil_condition, :sun_toler
-	def initialize(soil_condition,sun_toler)
+	def initialize(soil_condition,sun_toler,model,brand,price)
+		super model, brand, price
+		# call the initialize the superclass
 		@soil_condition = soil_condition
 		@sun_toler = sun_toler
 	end
@@ -60,10 +62,12 @@ class Trees < GardenPlants
 	end
 end
 
-autumn_twist = Trees.new("acidic", "full sun")
+autumn_twist = Trees.new("Encore Azalea", "80563",39.98,"acidic", "full sun")
 autumn_twist.disclaimer
 autumn_twist.model_num = "80563"
 autumn_twist.brand = "Encore Azalea"
 autumn_twist.price = 39.98
 autumn_twist.des
+
+# Need to modify a little bit to learn how to use super
 
